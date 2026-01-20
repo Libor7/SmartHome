@@ -29,5 +29,20 @@ export const useDevicesByActiveState = (isActive: boolean): SmartDevice[] =>
     state.devices.filter((d) => d.isActive === isActive),
   );
 
+export const useDevicesByRoom = (): Map<string, SmartDevice[]> =>
+  useSmartDevicesContext(({ state }) => {
+    const map = new Map<string, SmartDevice[]>();
+    state.devices.forEach((device) => {
+      if (!map.has(device.room)) map.set(device.room, []);
+      map.get(device.room)!.push(device);
+    });
+    return map;
+  });
+
+export const useUniqueRoomNames = (): string[] =>
+  useSmartDevicesContext(({ state }) =>
+    Array.from(new Set(state.devices.map((d) => d.room))),
+  );
+
 export const useSmartDevicesDispatch = () =>
   useSmartDevicesContext(({ dispatch }) => dispatch);
