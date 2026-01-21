@@ -2,8 +2,8 @@ import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 
+
 import {
-  filterDevicesByActiveState,
   useDevicesByRoom,
 } from "../../state/smartDevices.selectors";
 import DeviceCard from "./DeviceCard";
@@ -11,6 +11,8 @@ import RadioButtonGroup from "@/shared/ui/components/RadioButtonGroup";
 import { useState } from "react";
 import type { FilterType } from "../../types/smartDevice.types";
 import { deviceFilters } from "../../data/smartDevices.data";
+const { filterDevicesByActiveState } = await import('../../state/smartDevices.selectors');
+
 
 type Props = {
   room: string;
