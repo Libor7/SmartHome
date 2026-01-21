@@ -1,7 +1,6 @@
 import Container from "@mui/material/Container";
 
-import DashBoard from "./features/smart-devices/components/dashboard/DashBoard";
-import "./App.css";
+import DashBoard from "@/features/smart-devices/components/dashboard/DashBoard";
 
 const App = () => {
   return (
