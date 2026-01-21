@@ -1,11 +1,10 @@
-
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
-import Switch from "@mui/material/Switch";
 
 import type { SmartDevice } from "../types/smartDevice.types";
+import DeviceDetails from "./device-details/DeviceDetails";
 
 type Props = {
   device: SmartDevice;
@@ -16,11 +15,8 @@ const DeviceCard = ({ device }: Props) => {
     <Card>
       <CardContent>
         <Stack spacing={1}>
-          <Typography variant="subtitle1">
-            {device.name}
-          </Typography>
-          <Switch checked={device.isActive} />
-          {/* polymorfný obsah */}
+          <Typography variant="subtitle1">{device.name}</Typography>
+          <DeviceDetails device={device} />
         </Stack>
       </CardContent>
     </Card>

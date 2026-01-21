@@ -18,7 +18,6 @@ export const smartDevicesReducer = (
             : device,
         ),
       };
-
     case "SET_LIGHT_BRIGHTNESS":
       return {
         devices: state.devices.map((device) =>
@@ -27,11 +26,11 @@ export const smartDevicesReducer = (
             : device,
         ),
       };
-
-    case "SET_THERMOSTAT_VALUE":
+    case "SET_DEVICE_VALUE":
       return {
         devices: state.devices.map((device) =>
-          device.id === action.payload.deviceId && device.type === "thermostat"
+          device.id === action.payload.deviceId &&
+          (device.type === "thermostat" || device.type === "blind")
             ? {
                 ...device,
                 value: action.payload.value,
@@ -39,7 +38,33 @@ export const smartDevicesReducer = (
             : device,
         ),
       };
-
+    case "SET_CAMERA_STATUS":
+      return {
+        devices: state.devices.map((device) =>
+          device.id === action.payload.deviceId && device.type === "camera"
+            ? { ...device, status: action.payload.status }
+            : device,
+        ),
+      };
+    case "UPDATE_LOCK_ACTIVITY":
+      return {
+        devices: state.devices.map((device) =>
+          device.id === action.payload.deviceId && device.type === "lock"
+            ? { ...device, lastActivity: action.payload.timestamp }
+            : device,
+        ),
+      };
+    case "TOGGLE_THERMOSTAT_UNIT":
+      return {
+        devices: state.devices.map((device) =>
+          device.id === action.payload.deviceId && device.type === "thermostat"
+            ? {
+                ...device,
+                unit: device.unit === "°C" ? "°F" : "°C",
+              }
+            : device,
+        ),
+      };
     default:
       return state;
   }
