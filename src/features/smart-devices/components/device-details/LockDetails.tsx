@@ -1,3 +1,4 @@
+import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import Switch from "@mui/material/Switch";
@@ -21,11 +22,15 @@ const LockDetails = ({ device: { id, isActive, lastActivity } }: Props) => {
   };
 
   return (
-    <Stack spacing={0.5}>
-      <Switch checked={isActive} onChange={switchHandler} />
-      <Typography variant="caption" color="textSecondary">
-        Posledná aktivita: {formatLastActivity(lastActivity)}
-      </Typography>
+    <Stack spacing={2}>
+      <Box p={1}>
+        <Switch checked={isActive} onChange={switchHandler} />
+      </Box>
+      <Box p={1}>
+        <Typography variant="body2" color="textSecondary">
+          Posledná aktivita: {formatLastActivity(lastActivity)}
+        </Typography>
+      </Box>
     </Stack>
   );
 };

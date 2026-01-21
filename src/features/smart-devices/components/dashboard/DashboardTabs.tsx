@@ -18,7 +18,7 @@ const DashboardTabs = ({ tabNames, activeTab, onSelect }: Props) => {
       allowScrollButtonsMobile
     >
       {tabNames.map((name) => (
-        <Tab key={name} label={name} value={name} />
+        <Tab tabIndex={0} key={name} label={name} value={name} />
       ))}
     </Tabs>
   );

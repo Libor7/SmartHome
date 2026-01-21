@@ -4,7 +4,7 @@ import {
   SmartDevicesContext,
   type SmartDevicesContextValue,
 } from "./smartDevices.context";
-import type { SmartDevice } from "../types/smartDevice.types";
+import type { FilterType, SmartDevice } from "../types/smartDevice.types";
 
 const useSmartDevicesContext = <T>(
   selector: (ctx: SmartDevicesContextValue) => T,
@@ -17,17 +17,6 @@ const useSmartDevicesContext = <T>(
     }
     return selector(ctx);
   });
-
-export const useDevices = (): SmartDevice[] =>
-  useSmartDevicesContext(({ state }) => state.devices);
-
-export const useDeviceById = (id: number): SmartDevice | undefined =>
-  useSmartDevicesContext(({ state }) => state.devices.find((d) => d.id === id));
-
-export const useDevicesByActiveState = (isActive: boolean): SmartDevice[] =>
-  useSmartDevicesContext(({ state }) =>
-    state.devices.filter((d) => d.isActive === isActive),
-  );
 
 export const useDevicesByRoom = (): Map<string, SmartDevice[]> =>
   useSmartDevicesContext(({ state }) => {
@@ -46,3 +35,17 @@ export const useUniqueRoomNames = (): string[] =>
 
 export const useSmartDevicesDispatch = () =>
   useSmartDevicesContext(({ dispatch }) => dispatch);
+
+export const filterDevicesByActiveState = (
+  devices: SmartDevice[],
+  filter: FilterType,
+) => {
+  switch (filter) {
+    case "on":
+      return devices.filter((d) => d.isActive === true);
+    case "off":
+      return devices.filter((d) => d.isActive === false);
+    default:
+      return devices;
+  }
+};

@@ -1,4 +1,4 @@
-import type { SmartDevice } from "../types/smartDevice.types";
+import type { FilterType, SmartDevice } from "../types/smartDevice.types";
 
 export const smartDevicesData: SmartDevice[] = [
   {
@@ -52,4 +52,10 @@ export const smartDevicesData: SmartDevice[] = [
     isActive: true,
     status: "Recording",
   },
+];
+
+export const deviceFilters: { label: string; value: FilterType }[] = [
+  { label: "Zapnuté", value: "on" },
+  { label: "Vypnuté", value: "off" },
+  { label: "Všetko", value: "all" },
 ];

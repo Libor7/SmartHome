@@ -9,6 +9,8 @@ export type TemperatureUnit = "°C" | "°F";
 
 export type CameraStatus = "Recording" | "Idle";
 
+export type FilterType = "all" | "on" | "off";
+
 type BaseSmartDevice = {
   id: number;
   type: SmartDeviceType;

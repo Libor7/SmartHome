@@ -5,6 +5,7 @@ import Typography from "@mui/material/Typography";
 import type { CameraDevice } from "../../types/smartDevice.types";
 import { useToggleDevice } from "../../hooks/useToggleDevice";
 import { useSetCameraStatus } from "../../hooks/useSetCameraStatus";
+import { Box } from "@mui/material";
 
 type Props = {
   device: CameraDevice;
@@ -20,9 +21,13 @@ const CameraDetails = ({ device: { id, isActive, status } }: Props) => {
   };
 
   return (
-    <Stack spacing={0.5}>
-      <Switch checked={isActive} onChange={switchHandler} />
-      <Typography variant="body2">Status: {status}</Typography>
+    <Stack spacing={2}>
+      <Box p={1}>
+        <Switch checked={isActive} onChange={switchHandler} />
+      </Box>
+      <Box py={1}>
+        <Typography variant="body2">Status: {status}</Typography>
+      </Box>
     </Stack>
   );
 };

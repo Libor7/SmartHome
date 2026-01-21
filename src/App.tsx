@@ -1,11 +1,11 @@
 import Container from "@mui/material/Container";
 
+import DashBoard from "./features/smart-devices/components/dashboard/DashBoard";
 import "./App.css";
-import DashBoard from "./features/smart-devices/components/DashBoard";
 
 const App = () => {
   return (
-    <Container sx={{ py: 4 }}>
+    <Container maxWidth={false} disableGutters sx={{ minHeight: "100vh" }}>
       <DashBoard />
     </Container>
   );

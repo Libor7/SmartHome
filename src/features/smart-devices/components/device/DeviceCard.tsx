@@ -3,8 +3,9 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 
-import type { SmartDevice } from "../types/smartDevice.types";
-import DeviceDetails from "./device-details/DeviceDetails";
+import type { SmartDevice } from "../../types/smartDevice.types";
+import DeviceDetails from "../device-details/DeviceDetails";
+import DeviceIcon from "./DeviceIcon";
 
 type Props = {
   device: SmartDevice;
@@ -15,7 +16,10 @@ const DeviceCard = ({ device }: Props) => {
     <Card>
       <CardContent>
         <Stack spacing={1}>
-          <Typography variant="subtitle1">{device.name}</Typography>
+          <Stack direction="row" justifyContent="space-between">
+            <Typography variant="subtitle1">{device.name}</Typography>
+            <DeviceIcon device={device} />
+          </Stack>
           <DeviceDetails device={device} />
         </Stack>
       </CardContent>

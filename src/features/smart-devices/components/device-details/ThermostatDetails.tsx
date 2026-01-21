@@ -30,7 +30,6 @@ const ThermostatDetails = ({ device: { value, unit, id } }: Props) => {
       />
       <RadioButtonGroup
         currentValue={unit}
-        groupLabel="Jednotka teploty"
         options={temperatureUnits}
         onChange={() => toggleUnit()}
       />

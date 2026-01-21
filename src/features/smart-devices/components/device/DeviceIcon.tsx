@@ -5,7 +5,8 @@ import CameraAltIcon from "@mui/icons-material/Camera";
 import BlindsIcon from "@mui/icons-material/ViewDay";
 import type { ElementType } from "react";
 
-import type { SmartDeviceType } from "../types/smartDevice.types";
+import type { SmartDevice, SmartDeviceType } from "../../types/smartDevice.types";
+import { getDeviceIconColor } from "../../utils/deviceIcon";
 
 const iconMap: Record<SmartDeviceType, ElementType> = {
   light: LightIcon,
@@ -16,12 +17,12 @@ const iconMap: Record<SmartDeviceType, ElementType> = {
 };
 
 type Props = {
-  color: string;
-  type: SmartDeviceType;
+  device: SmartDevice;
 };
 
-const DeviceIcon = ({ type, color }: Props) => {
-  const Icon = iconMap[type];
+const DeviceIcon = ({ device }: Props) => {
+  const color = getDeviceIconColor(device);
+  const Icon = iconMap[device.type];
 
   return <Icon style={{ color }} />;
 };

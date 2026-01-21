@@ -3,27 +3,19 @@ import Switch from "@mui/material/Switch";
 import Typography from "@mui/material/Typography";
 
 import type { LightDevice } from "../../types/smartDevice.types";
-import DeviceIcon from "../DeviceIcon";
 import { useToggleDevice } from "../../hooks/useToggleDevice";
-import { hexToRgba } from "../../utils/color";
 import { useSetLightBrightness } from "../../hooks/useSetLightBrightness";
 
 type Props = {
   device: LightDevice;
 };
 
-const LightDetails = ({
-  device: { id, brightness, isActive, color, type },
-}: Props) => {
+const LightDetails = ({ device: { id, brightness, isActive } }: Props) => {
   const toggle = useToggleDevice(id);
   const setBrightness = useSetLightBrightness(id);
 
   return (
     <>
-      <DeviceIcon
-        type={type}
-        color={isActive ? hexToRgba(color, brightness / 100) : ""}
-      />
       <Switch checked={isActive} onChange={toggle} />
       <Slider
         value={brightness}
