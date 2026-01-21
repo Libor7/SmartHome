@@ -1,11 +1,11 @@
 import Stack from "@mui/material/Stack";
 import Switch from "@mui/material/Switch";
 import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
 
 import type { CameraDevice } from "../../types/smartDevice.types";
 import { useToggleDevice } from "../../hooks/useToggleDevice";
 import { useSetCameraStatus } from "../../hooks/useSetCameraStatus";
-import Box from "@mui/material/Box";
 
 type Props = {
   device: CameraDevice;

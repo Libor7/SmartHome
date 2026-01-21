@@ -11,25 +11,26 @@ export default defineConfig({
     dedupe: ["react", "react-dom"],
   },
   build: {
+    sourcemap: process.env.NODE_ENV === "production",
     target: "es2020",
-    sourcemap: false,
+    // sourcemap: true,
     minify: "esbuild",
-    rollupOptions: {
-      output: {
-        manualChunks(id) {
-          if (id.includes("node_modules")) {
-            if (id.includes("react")) return "react";
-            if (
-              id.includes("@mui/material") ||
-              id.includes("@mui/icons-material")
-            ) {
-              return "mui";
-            }
-            return "vendor";
-          }
-        },
-      },
-    },
+    // rollupOptions: {
+    //   output: {
+    //     manualChunks(id) {
+    //       if (id.includes("node_modules")) {
+    //         if (id.includes("react")) return "react";
+    //         if (
+    //           id.includes("@mui/material") ||
+    //           id.includes("@mui/icons-material")
+    //         ) {
+    //           return "mui";
+    //         }
+    //         return "vendor";
+    //       }
+    //     },
+    //   },
+    // },
   },
   esbuild: {
     legalComments: "none",
